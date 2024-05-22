@@ -16,11 +16,4 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Reviews\Commands\DeleteReview\" />
-    <Folder Include="Reviews\Commands\UpdateReview\" />
-    <Folder Include="Reviews\Mappers\" />
-    <Folder Include="Reviews\Queries\" />
-  </ItemGroup>
-
 </Project>

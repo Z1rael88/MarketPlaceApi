@@ -2,7 +2,6 @@ using MarketPlaceApi.Application.Products.Commands.CreateProduct;
 using MarketPlaceApi.Application.Products.Commands.DeleteProduct;
 using MarketPlaceApi.Application.Products.Commands.UpdateProduct;
 using MarketPlaceApi.Application.Products.Queries.GetProducts;
-using Microsoft.Extensions.DependencyInjection.Products.Queries.GetProducts;
 
 namespace MarketPlaceApi.Web.Endpoints;
 

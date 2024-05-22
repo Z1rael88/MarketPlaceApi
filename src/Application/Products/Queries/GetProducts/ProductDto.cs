@@ -1,4 +1,4 @@
-namespace Microsoft.Extensions.DependencyInjection.Products.Queries.GetProducts;
+namespace MarketPlaceApi.Application.Products.Queries.GetProducts;
 
 public record ProductDto
 {

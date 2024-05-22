@@ -1,6 +1,5 @@
 using MarketPlaceApi.Application.Common.Interfaces;
 using MarketPlaceApi.Application.Products.Mappers;
-using Microsoft.Extensions.DependencyInjection.Products.Queries.GetProducts;
 
 namespace MarketPlaceApi.Application.Products.Queries.GetProducts;
 
