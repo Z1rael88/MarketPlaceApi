@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Reviews\Commands\CreateReview\" />
     <Folder Include="Reviews\Commands\DeleteReview\" />
     <Folder Include="Reviews\Commands\UpdateReview\" />
     <Folder Include="Reviews\Mappers\" />
