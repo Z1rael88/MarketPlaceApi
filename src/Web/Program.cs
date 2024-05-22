@@ -1,3 +1,4 @@
+using MarketPlaceApi.Infrastructure;
 using MarketPlaceApi.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);

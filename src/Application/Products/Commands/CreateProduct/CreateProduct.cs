@@ -10,11 +10,11 @@ public record CreateProductCommand : IRequest<int>
     public int Rating { get; set; }
     public string? PhotoUrl { get; set; }
 }
-public class CreateProductCommandHandler(IApplicationDbContext dbContext) : IRequestHandler<CreateProductCommand,int>
+public class CreateProductCommandHandler(IApplicationDbContext dbContext, IUser user) : IRequestHandler<CreateProductCommand,int>
 {
-    public async  Task<int> Handle(CreateProductCommand command, CancellationToken cancellationToken)
+    public async Task<int> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
-        //Guard.Against.Null(user.Id);
+        Guard.Against.Null(user.Id);
         var product = new Product
         {
             Name = command.Name, Price = command.Price, PhotoUrl = command.PhotoUrl, Rating = command.Rating
