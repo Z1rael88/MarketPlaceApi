@@ -9,10 +9,12 @@ public class DeleteProductCommandHandler(IApplicationDbContext dbContext) : IReq
     public async Task Handle(DeleteProductCommand request, CancellationToken cancellationToken)
     {
         var product = await dbContext.Products
-            .FindAsync(new object[] { request.Id }, cancellationToken);
+            .Include(r => r.Reviews)
+            .FirstOrDefaultAsync(p => p.Id == request.Id,cancellationToken);
 
         Guard.Against.NotFound(request.Id, product);
 
+        dbContext.Reviews.RemoveRange(product.Reviews);
         dbContext.Products.Remove(product);
         await dbContext.SaveChangesAsync(cancellationToken);
     }

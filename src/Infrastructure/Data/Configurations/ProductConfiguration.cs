@@ -16,5 +16,6 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             .IsRequired()
             .HasColumnType("decimal(18, 2)");
         builder.Property(p => p.Rating);
+
     }
 }

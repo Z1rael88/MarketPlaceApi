@@ -9,6 +9,7 @@ public class GetAllProductsQueryHandler(IApplicationDbContext dbContext): IReque
     public async Task<ICollection<ProductDto>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
     {
         List<ProductDto> productResponses = await dbContext.Products
+            .Include(r=>r.Reviews)
             .Select(product => product.ToProductDto())
             .ToListAsync(cancellationToken);
         return productResponses;

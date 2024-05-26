@@ -69,14 +69,20 @@ namespace MarketPlaceApi.Infrastructure.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
                     b.Property<string>("ReviewText")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Reviews");
                 });
@@ -356,6 +362,17 @@ namespace MarketPlaceApi.Infrastructure.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("MarketPlaceApi.Domain.Entities.Review", b =>
+                {
+                    b.HasOne("MarketPlaceApi.Domain.Entities.Product", "Product")
+                        .WithMany("Reviews")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("MarketPlaceApi.Domain.Entities.TodoItem", b =>
                 {
                     b.HasOne("MarketPlaceApi.Domain.Entities.TodoList", "List")
@@ -439,6 +456,11 @@ namespace MarketPlaceApi.Infrastructure.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MarketPlaceApi.Domain.Entities.Product", b =>
+                {
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("MarketPlaceApi.Domain.Entities.TodoList", b =>

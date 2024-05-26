@@ -9,4 +9,5 @@ public class Product : BaseAuditableEntity
     public decimal Price { get; set; }
     public int Rating { get; set; }
     public string? PhotoUrl { get; set; }
+    public ICollection<Review> Reviews { get; set; } = null!;
 }

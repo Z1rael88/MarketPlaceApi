@@ -13,6 +13,7 @@ public class Reviews : EndpointGroupBase
     public override void Map(WebApplication app)
     {
         app.MapGroup(this)
+            .RequireAuthorization()
             .MapPost(CreateReviewEndpoint)
             .MapDelete(DeleteReviewEndpoint, "{id}")
             .MapPut(UpdateReviewEndpoint, "{id}")

@@ -10,6 +10,7 @@ public class Products : EndpointGroupBase
     public override void Map(WebApplication app)
     {
         app.MapGroup(this)
+            .RequireAuthorization()
             .MapPost(CreateProductEndpoint)
             .MapDelete(DeleteProductEndpoint, "{Id}")
             .MapGet(GetProductsEndpoint)
