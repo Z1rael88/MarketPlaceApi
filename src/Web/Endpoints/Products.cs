@@ -14,7 +14,8 @@ public class Products : EndpointGroupBase
             .MapPost(CreateProductEndpoint)
             .MapDelete(DeleteProductEndpoint, "{Id}")
             .MapGet(GetProductsEndpoint)
-            .MapPut(UpdateProductEndpoint,"{id}");
+            .MapPut(UpdateProductEndpoint, "{id}")
+            .MapGet(GetProductByIdEndpoint,"{id}");
     }
 
     public  Task<int> CreateProductEndpoint(CreateProductCommand command,ISender sender)
@@ -37,5 +38,11 @@ public class Products : EndpointGroupBase
         if (id != command.Id) return Results.BadRequest();
         await sender.Send(command);
         return Results.NoContent();
+    }
+
+    public async Task<ProductDto> GetProductByIdEndpoint(ISender sender,int id)
+    {
+        var query = new GetProductById(id);
+        return await sender.Send(query);
     }
 }
